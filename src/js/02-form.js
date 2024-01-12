@@ -39,6 +39,6 @@
 //     message: form.elements.message.value,
 //   });
 
-//   localStorage.removeItem(LOCAL_FEEDBACK_KEY);
-//   form.reset();
-// });
+  localStorage.removeItem(LOCAL_FEEDBACK_KEY);
+  form.reset();
+});
