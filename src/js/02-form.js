@@ -1,3 +1,5 @@
+
+
 import debounce from 'debounce';
 
 const form = document.querySelector('.feedback-form');
@@ -34,7 +36,9 @@ form.addEventListener(
 form.addEventListener('submit', event => {
   event.preventDefault();
 
+
   console.log({
+    
     email: form.elements.email.value,
     message: form.elements.message.value,
   });
