@@ -1,18 +1,18 @@
-
-
 import debounce from 'debounce';
 
 const form = document.querySelector('.feedback-form');
 const LOCAL_FEEDBACK_KEY = 'feedback-form-state';
 
 try {
-  const initialFormData =
-    JSON.parse(localStorage.getItem(LOCAL_FEEDBACK_KEY)) || {};
+  const initialFormData = JSON.parse(localStorage.getItem(LOCAL_FEEDBACK_KEY)) || {};
 
   Array.from(form.elements).forEach(element => {
     const storageValue = initialFormData[element.name];
-    if (storageValue) {
-      element.value = initialFormData[element.name];
+
+    if (element.name === 'email' || element.name === 'message') {
+      if (storageValue !== undefined) {
+        element.value = storageValue.trim();
+      }
     }
   });
 } catch (e) {
@@ -36,11 +36,9 @@ form.addEventListener(
 form.addEventListener('submit', event => {
   event.preventDefault();
 
-
   console.log({
-    
-    email: form.elements.email.value,
-    message: form.elements.message.value,
+    email: form.elements.email.value.trim(),
+    message: form.elements.message.value.trim(),
   });
 
   localStorage.removeItem(LOCAL_FEEDBACK_KEY);
